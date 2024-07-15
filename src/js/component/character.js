@@ -1,82 +1,53 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
 
-export const Character = () => {
+
+
+export const Character = (person, props) => {
+	const { store, actions } = useContext(Context)
+	console.log(person)
+	const handlefavorites = () => {
+		if (store.favorites.includes(person.properties.name)) {
+			actions.deleteFavorites(person.properties.name)
+
+		}
+
+		else { actions.addFavorites(person.properties.name) }
+
+	}
+
 	return (
-		<div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(19rem, 1fr))' }}>
 
-      
 
-		
-		<div class="card" style={{width: "19rem"}}>
-  <img src="https://thorntons-investments.co.uk/wp-content/uploads/2017/08/400x200.png" class="card-img-top" alt="..." >
-  </img>
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Gender: <br/> Hair Color: <br/> Eye-Color:
-    </p>
-    <a href="#" class="btn btn-primary">Learn More!</a> 
-    
-  </div>
-</div>
+		<div >
 
-<div  class="card" style={{width: "19rem"}}>
-  <img src="https://thorntons-investments.co.uk/wp-content/uploads/2017/08/400x200.png" class="card-img-top" alt="..." >
-  </img>
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Gender: <br/> Hair Color: <br/> Eye-Color:
-    </p>
-    <a href="#" class="btn btn-primary">Learn More!</a> 
-    
-  </div>
-</div>
+			<div class="card" style={{ width: "19rem" }}>
+				<img src="https://thorntons-investments.co.uk/wp-content/uploads/2017/08/400x200.png" class="card-img-top" alt="..." >
+				</img>
+				<div class="card-body">
+					<h5 class="card-title">{person.properties.name}</h5>
+					<p class="card-text">Gender:{person.properties.gender} <br /> Hair Color:{person.properties.haircolor} <br /> Eye-Color:{person.properties.eyecolor}
+					</p>
+					<div className="navbar">
+						<Link to={`/CharacterView/${person.uid}`}>
+							<button className="btn btn-primary">Learn more!</button>
+						</Link>
+						<button onClick={() => handlefavorites()} className="btn">
+							<i class="fa-regular fa-heart"></i>
+						</button>
 
-<div  class="card" style={{width: "19rem"}}>
-  <img src="https://thorntons-investments.co.uk/wp-content/uploads/2017/08/400x200.png" class="card-img-top" alt="..." >
-  </img>
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Gender: <br/> Hair Color: <br/> Eye-Color:
-    </p>
-    <a href="#" class="btn btn-primary">Learn More!</a> 
-  </div>
-</div>
-
-<div  class="card" style={{width: "19rem"}}>
-  <img src="https://thorntons-investments.co.uk/wp-content/uploads/2017/08/400x200.png" class="card-img-top" alt="..." >
-  </img>
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Gender: <br/> Hair Color: <br/> Eye-Color:
-    </p>
-    <a href="#" class="btn btn-primary">Learn More!</a> 
-  </div>
-</div>
-
-<div  class="card" style={{width: "19rem"}}>
-  <img src="https://thorntons-investments.co.uk/wp-content/uploads/2017/08/400x200.png" class="card-img-top" alt="..." >
-  </img>
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Gender: <br/> Hair Color: <br/> Eye-Color:
-    </p>
-    <a href="#" class="btn btn-primary">Learn More!</a> 
-  </div>
-</div>
-
-<div  class="card" style={{width: "19rem"}}>
-  <img src="https://thorntons-investments.co.uk/wp-content/uploads/2017/08/400x200.png" class="card-img-top" alt="..." >
-  </img>
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Gender: <br/> Hair Color: <br/> Eye-Color:
-    </p>
-    <a href="#" class="btn btn-primary">Learn More!</a> 
-  </div>
-</div>
+					</div>
 
 
 
-	</div>
-)};
+				</div>
+
+
+			</div>
+		</div>
+
+
+
+	)
+};

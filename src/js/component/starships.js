@@ -4,13 +4,13 @@ import { Context } from "../store/appContext";
 
 
 
-export const Planets = ({ planet }) => {
+export const Starships = ({ starship }) => {
   const { store, actions } = useContext(Context)
-  const [planetDetails, setPlanetDetails] = useState(null)
+  const [starshipDetails, setstarshipDetails] = useState(null)
   useEffect(() => {
-    fetch(planet.url)
+    fetch(starship.url)
       .then(resp => resp.json())
-      .then(data => setPlanetDetails(data.result))
+      .then(data => setstarshipDetails(data.result))
       .catch(error => console.log(error))
   }, [])
   return (
@@ -22,8 +22,8 @@ export const Planets = ({ planet }) => {
         <img src="https://thorntons-investments.co.uk/wp-content/uploads/2017/08/400x200.png" class="card-img-top" alt="..." >
         </img>
         <div class="card-body">
-          <h5 class="card-title">{planet.name}</h5>
-          <p class="card-text">Population: {planetDetails?.properties.population} <br /> Terrain:{planetDetails?.properties.terrain}
+          <h5 class="card-title">{starship.name}</h5>
+          <p class="card-text"> Model:{starshipDetails?.properties.model}
           </p>
           <a href="#" class="btn btn-primary">Learn More!</a>
 
