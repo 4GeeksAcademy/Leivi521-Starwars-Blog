@@ -15,7 +15,7 @@ export const Home = () => {
     <div>
       <h1>Welcome Padawan! </h1>
       <h3>There is no ignorance, there is knowledge. There is no passion, there is serenity. There is no chaos, there is harmony. There is no death, there is the Force.</h3>
-      <p>“THE GREATEST TEACHER FAILURE IS.” - Yoda</p>
+      <p>"THE GREATEST TEACHER FAILURE IS." - Yoda</p>
 
       <div>
         <h3>
@@ -27,7 +27,7 @@ export const Home = () => {
 
         {store.people?.map((person, index) =>
 
-          <Character id={person.uid} key={index} person={person} />
+          <Character key={index} person={person} />
 
         )}
       </div>
