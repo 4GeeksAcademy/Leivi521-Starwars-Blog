@@ -35,7 +35,7 @@ export const Character = ({ person }) => {
 							<button className="btn btn-primary">Learn more!</button>
 						</Link>
 						<button onClick={() => handlefavorites()} className="btn">
-							<i class="fa-regular fa-heart"></i>
+							<i class={store.favorites.includes(person.properties.name) ? "fa-soild fa-heart" : "fa-regular fa-heart"}></i>
 						</button>
 
 					</div>

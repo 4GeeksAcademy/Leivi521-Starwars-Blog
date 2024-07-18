@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export const Navbar = () => {
 	const { store, actions } = useContext(Context)
 	return (
-		<nav className="navbar navbar-light bg-light mb-3">
+		<nav className="navbar navbar-light bg-light mb-3 container">
 			<Link to="/">
 				<span className="navbar-brand mb-0 h1">React Boilerplate</span>
 			</Link>
@@ -14,10 +14,12 @@ export const Navbar = () => {
 					Favorites
 				</button>
 				<ul class="dropdown-menu">
-					{store.favorites.map(item => (<li><a class="dropdown-item" href="#">{item}</a></li>
+					{store.favorites.map(item => (<li className="navbar"><p>{item}</p>
+						<button className="btn" onClick={() => actions.deleteFavorites(item)}> <i class="fa-solid fa-trash"></i></button></li>
 					))}
 				</ul>
 			</div>
+
 		</nav>
 	);
 };
